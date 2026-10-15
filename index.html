@@ -428,7 +428,16 @@
     </div>
 
     <script>
-        const { ipcRenderer } = require('electron');
+    // Cek apakah aplikasi berjalan di dalam lingkungan Electron atau Web Browser biasa
+let ipcRenderer = null;
+try {
+    if (window && window.process && window.process.type) {
+        const electron = require('electron');
+        ipcRenderer = electron.ipcRenderer;
+    }
+} catch (e) {
+    console.log("Berjalan di lingkungan web browser biasa.");
+}
 
         // --- 1. STATE & LANGUAGE ---
         let currentLang = localStorage.getItem('transNesia_lang') || 'id';
