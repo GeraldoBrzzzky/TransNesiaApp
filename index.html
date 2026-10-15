@@ -435,6 +435,13 @@ try {
         const electron = require('electron');
         ipcRenderer = electron.ipcRenderer;
     }
+
+    // KIRIM DATA KE BACKEND ELECTRON (Hanya dijalankan jika bentuk .exe / Electron)
+if (ipcRenderer) {
+    ipcRenderer.send('save-to-excel', booking);
+} else {
+    console.log("Data disimpan secara lokal (mode web).", booking);
+}
 } catch (e) {
     console.log("Berjalan di lingkungan web browser biasa.");
 }
@@ -822,7 +829,7 @@ try {
             document.getElementById('checkoutModal').classList.add('modal-active');
         });
 
-        document.getElementById('finalCheckoutForm').addEventListener('submit', (e) => {
+     document.getElementById('finalCheckoutForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
             const accountNumber = document.getElementById('accountNumber').value;
@@ -842,9 +849,16 @@ try {
             state.globalBookings.unshift(booking);
             localStorage.setItem('transNesia_bookings', JSON.stringify(state.globalBookings));
             
-            // KIRIM DATA KE BACKEND ELECTRON UNTUK DICATAT KE EXCEL SECARA REAL-TIME
-            ipcRenderer.send('save-to-excel', booking);
+            // AMANKAN KIRIM DATA KE ELECTRON (Hanya jika dijalankan di Desktop .exe)
+            if (typeof ipcRenderer !== 'undefined' && ipcRenderer) {
+                try {
+                    ipcRenderer.send('save-to-excel', booking);
+                } catch (err) {
+                    console.log("Electron IPC tidak aktif di web:", err);
+                }
+            }
 
+            // MODAL SUKSES WAJIB DIEKSEKUSI DI SEMUA PLATFORM (WEB & EXE)
             document.getElementById('checkoutModal').classList.remove('modal-active');
             document.getElementById('successModal').classList.add('modal-active');
             document.getElementById('finalCheckoutForm').reset();
