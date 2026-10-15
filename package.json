@@ -1,0 +1,24 @@
+{
+  "name": "busgo",
+  "version": "1.0.0",
+  "description": "Aplikasi Pemesanan Tiket BusGo",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.busgo.app",
+    "productName": "BusGo",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
