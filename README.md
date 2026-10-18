@@ -22,9 +22,9 @@
 
 - **Pencarian Rute & Tarif Berbasis Jarak Riil**: Sistem secara otomatis menghitung tarif tiket bus berdasarkan jarak tempuh darat asli (kilometer) antar kota di Pulau Jawa dan Sumatra.
 - **Pilihan Kelas Armada**:
-  - 🚍 **Executive**: Harga Dasar Rp 180.000 + (Rp 1.000 / km)
-  - 🚐 **Bisnis**: Harga Dasar Rp 120.000 + (Rp 1.000 / km)
-  - 🚌 **Ekonomi**: Harga Dasar Rp 70.000 + (Rp 1.000 / km)
+  - 🚍 **Executive**: Harga Dasar Rp 180.000 + (Rp 800 / km)
+  - 🚐 **Bisnis**: Harga Dasar Rp 120.000 + (Rp 450 / km)
+  - 🚌 **Ekonomi**: Harga Dasar Rp 70.000 + (Rp 240 / km)
 - **Denah Kursi Interaktif (Unlimited)**: Pilih kursi penumpang secara bebas dan tidak terbatas dalam satu kali pemesanan dengan visualisasi ketersediaan kursi secara *real-time*.
 - **Diskon Otomatis**: Potongan harga sebesar **10%** secara otomatis aktif jika pengguna memesan lebih dari 2 tiket dalam satu transaksi.
 - **Pembayaran Non-Tunai**: Mendukung berbagai metode pembayaran seperti Transfer Bank (BCA & Mandiri), QRIS, dan E-Wallet (GoPay/OVO).
